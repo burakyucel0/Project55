@@ -72,7 +72,7 @@
         <Variable x:TypeArguments="s:String[]" Default="[New String() { pdf1Path, pdf3Path }]" Name="pdfList" />
         <Variable x:TypeArguments="x:String" Default="[downloadsFolder + &quot;\lorem.pdf&quot;]" Name="pdf3Path" />
       </Sequence.Variables>
-      <adac:LogMessage DisplayName="Şifre korumalı dosya kontrolü başlatıldı." sap2010:WorkflowViewState.IdRef="LogMessage_1" LogLevel="1" Message="[&quot;Şifre korumalı dosya kontrol ediliyor&quot;]" />
+      <adac:LogMessage DisplayName="Şifre korumalı dosya kontrolü başlatıldı." sap2010:WorkflowViewState.IdRef="LogMessage_1" LogLevel="2" Message="[&quot;Şifre korumalı dosya kontrol ediliyor&quot;]" />
       <apac:ReadPDFText Text="{x:Null}" DisplayName="PDF Yazılarını Oku" Filename="[pdf2Path]" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Password="[pdf2Password]" Range="All" />
       <adac:CommentOut sap2010:WorkflowViewState.IdRef="CommentOut_1">
         <adac:CommentOut.Body>
