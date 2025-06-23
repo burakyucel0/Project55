@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="pdf1" sap2010:WorkflowViewState.IdRef="Sequence7_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:adac="clr-namespace:ArenaRobotics.Debug.Activities.Controllers;assembly=ArenaRobotics.Debug.Activities" xmlns:apac="clr-namespace:ArenaRobotics.PDF.Activities.Controllers;assembly=ArenaRobotics.PDF.Activities" xmlns:asac="clr-namespace:ArenaRobotics.SYS.Activities.Controllers;assembly=ArenaRobotics.SYS.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>ArenaRobotics.Domain.Entities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>ArenaRobotics.Domain</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Default="C:\Users\buraky\Downloads\lorem-protected.pdf" Name="pdfPath" />
+        <Variable x:TypeArguments="x:String" Default="123" Name="pdfPassword" />
+        <Variable x:TypeArguments="x:Int32" Default="0" Name="pageCount" />
+        <Variable x:TypeArguments="x:String" Name="pdfText" />
+        <Variable x:TypeArguments="x:String" Default="C:\Users\buraky\Downloads" Name="outputFolder" />
+        <Variable x:TypeArguments="x:String" Name="outputFilePath" />
+        <Variable x:TypeArguments="x:String" Name="outputFileName" />
+      </Sequence.Variables>
+      <apac:GetPDFPageCount DisplayName="PDF dosyasının toplam sayfa sayısını alır." Filename="[pdfPath]" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[pageCount]" Password="[pdfPassword]" />
+      <apac:ReadPDFText DisplayName="PDF'in tüm sayfalarındaki metni okur." Filename="[pdfPath]" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Password="[pdfPassword]" Range="All" Text="[pdfText]" />
+      <apac:ExtractImagesFromPDF Password="{x:Null}" DisplayName="Resimleri PDF'den Çıkar" Filename="C:\Users\buraky\OneDrive - Arena Bilgisayar San. ve Tic. A.S\Desktop\invoice.pdf" sap2010:WorkflowViewState.IdRef="ExtractImagesFromPDF_1" ImageExtension="0" OutputFolder="C:\Users\buraky\OneDrive - Arena Bilgisayar San. ve Tic. A.S\Desktop" />
+      <Assign DisplayName="Otomatik dosya adını oluşturur." sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[outputFileName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["pdf_text_" &amp; Guid.NewGuid().ToString() &amp; ".txt"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Çıktı dosyasının tam yolunu oluşturur." sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[outputFilePath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(outputFolder, outputFileName)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <asac:WriteTextFile DisplayName="Okunan metni .txt dosyasına kaydeder." Encoding="utf-8" Filename="[outputFilePath]" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[pdfText]" />
+      <adac:LogMessage DisplayName="Başarı mesajı loglar." sap2010:WorkflowViewState.IdRef="LogMessage_1" LogLevel="1" Message="[&quot;PDF metni başarıyla kaydedildi.&quot;]" />
+    </Sequence>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="GetPDFPageCount_1" sap:VirtualizedContainerService.HintSize="641.6,117.6" />
+      <sap2010:ViewStateData Id="ReadPDFText_1" sap:VirtualizedContainerService.HintSize="641.6,117.6" />
+      <sap2010:ViewStateData Id="ExtractImagesFromPDF_1" sap:VirtualizedContainerService.HintSize="641.6,186.4" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="641.6,92" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="641.6,92" />
+      <sap2010:ViewStateData Id="WriteTextFile_1" sap:VirtualizedContainerService.HintSize="641.6,186.4" />
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="641.6,175.2" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="670.4,1344">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="699.2,1480.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence7_1" sap:VirtualizedContainerService.HintSize="739.2,1560.8" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

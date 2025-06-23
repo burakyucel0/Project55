@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" sap2010:WorkflowViewState.IdRef="Sequence7_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:adac="clr-namespace:ArenaRobotics.Debug.Activities.Controllers;assembly=ArenaRobotics.Debug.Activities" xmlns:apacl="clr-namespace:ArenaRobotics.Programming.Activities.Controllers.Loops;assembly=ArenaRobotics.Programming.Activities" xmlns:awac="clr-namespace:ArenaRobotics.Workflow.Activities.Controllers;assembly=ArenaRobotics.Workflow.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>ArenaRobotics.Domain.Entities</x:String>
+      <x:String>Microsoft.Graph</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>ArenaRobotics.Domain</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Dizi" sap2010:WorkflowViewState.IdRef="Sequence_10">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="number" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="i" />
+      <Variable x:TypeArguments="x:Boolean" Default="True" Name="isPrime" />
+    </Sequence.Variables>
+    <awac:For Condition="100" ConditionType="4" DelayBetween="200" DisplayName="1'den 100'e kadar olan sayıları döngüye alır." sap2010:WorkflowViewState.IdRef="For_2" InitialValue="1" Statement="1">
+      <awac:For.Body>
+        <ActivityAction x:TypeArguments="x:Int32" DisplayName="Body">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="number" />
+          </ActivityAction.Argument>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <awac:If Condition="[number &gt; 1]" DisplayName="Sayı 1'den büyükse asal kontrolü yap." sap2010:WorkflowViewState.IdRef="If_3">
+              <awac:If.ElseBody>
+                <Sequence DisplayName="Yap" sap2010:WorkflowViewState.IdRef="Sequence_2" />
+              </awac:If.ElseBody>
+              <awac:If.IfBody>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Assign DisplayName="Her sayı için asal kontrolü başlatılır." sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[isPrime]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <awac:For Condition="[Convert.ToInt32(Math.Sqrt(number))]" ConditionType="4" DelayBetween="200" DisplayName="2'den başlayarak sayının kareköküne kadar bölen olup olmadığını kontrol eder." sap2010:WorkflowViewState.IdRef="For_1" InitialValue="2" Statement="1">
+                    <awac:For.Body>
+                      <ActivityAction x:TypeArguments="x:Int32" DisplayName="Body">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                        </ActivityAction.Argument>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <awac:If Condition="[number Mod i = 0]" DisplayName="Bölen bulunduysa asal değildir." sap2010:WorkflowViewState.IdRef="If_1">
+                            <awac:If.ElseBody>
+                              <Sequence DisplayName="Yap" sap2010:WorkflowViewState.IdRef="Sequence_3" />
+                            </awac:If.ElseBody>
+                            <awac:If.IfBody>
+                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                <Assign DisplayName="Bölen bulundu, asal değil olarak işaretle." sap2010:WorkflowViewState.IdRef="Assign_2">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Boolean">[isPrime]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <apacl:Break DisplayName="Döngüyü sonlandır." sap2010:WorkflowViewState.IdRef="Break_1" />
+                              </Sequence>
+                            </awac:If.IfBody>
+                          </awac:If>
+                        </Sequence>
+                      </ActivityAction>
+                    </awac:For.Body>
+                  </awac:For>
+                  <awac:If Condition="[isPrime]" DisplayName="Eğer sayı asalsa konsola yaz." sap2010:WorkflowViewState.IdRef="If_2">
+                    <awac:If.ElseBody>
+                      <Sequence DisplayName="Yap" sap2010:WorkflowViewState.IdRef="Sequence_6" />
+                    </awac:If.ElseBody>
+                    <awac:If.IfBody>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <adac:LogMessage DisplayName="Asal sayıyı konsola yazar." sap2010:WorkflowViewState.IdRef="LogMessage_1" LogLevel="2" Message="[number.ToString()]" />
+                      </Sequence>
+                    </awac:If.IfBody>
+                  </awac:If>
+                </Sequence>
+              </awac:If.IfBody>
+            </awac:If>
+          </Sequence>
+        </ActivityAction>
+      </awac:For.Body>
+    </awac:For>
+    <sads:DebugSymbol.Symbol>dw1DOlxFbXB0eS54YW1sAA==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="200,111">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="986,91" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200,111">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="640,91" />
+      <sap2010:ViewStateData Id="Break_1" sap:VirtualizedContainerService.HintSize="640,48" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="668,315">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="922,543" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="950,679">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="For_1" sap:VirtualizedContainerService.HintSize="986,1001" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="200,111">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="326,172" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="354,308">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="986,536" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="1014,1844">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="1268,2072" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="1296,2208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="For_2" sap:VirtualizedContainerService.HintSize="1332,2530" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="1360,2666">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence7_1" sap:VirtualizedContainerService.HintSize="1400,2746" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
