@@ -72,7 +72,7 @@
         <Variable x:TypeArguments="s:String[]" Default="[New String() { pdf1Path, pdf3Path }]" Name="pdfList" />
         <Variable x:TypeArguments="x:String" Default="[downloadsFolder + &quot;\lorem.pdf&quot;]" Name="pdf3Path" />
       </Sequence.Variables>
-      <adac:LogMessage DisplayName="Şifre korumalı dosya kontrolü başlatıldı." sap2010:WorkflowViewState.IdRef="LogMessage_1" LogLevel="2" Message="[&quot;Şifre korumalı dosya kontrol ediliyor&quot;]" />
+      <adac:LogMessage DisplayName="Şifre korumalı dosya kontrolü başlatıldı." sap2010:WorkflowViewState.IdRef="LogMessage_1" LogLevel="1" Message="[&quot;Şifre korumalı dosya kontrol ediliyor&quot;]" />
       <apac:ReadPDFText Text="{x:Null}" DisplayName="PDF Yazılarını Oku" Filename="[pdf2Path]" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Password="[pdf2Password]" Range="All" />
       <adac:CommentOut sap2010:WorkflowViewState.IdRef="CommentOut_1">
         <adac:CommentOut.Body>
@@ -94,30 +94,30 @@
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="442.4,175.2" />
-      <sap2010:ViewStateData Id="ReadPDFText_1" sap:VirtualizedContainerService.HintSize="442.4,117.6" />
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="442,172" />
+      <sap2010:ViewStateData Id="ReadPDFText_1" sap:VirtualizedContainerService.HintSize="442,116" />
       <sap2010:ViewStateData Id="ManagePDFPassword_1" sap:VirtualizedContainerService.HintSize="400,186.4" />
-      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="442.4,296.8" />
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="442,296" />
       <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="442,172" />
       <sap2010:ViewStateData Id="JoinPDFFiles_1" sap:VirtualizedContainerService.HintSize="442,116" />
       <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="442,172" />
       <sap2010:ViewStateData Id="ExtractPDFPageRange_1" sap:VirtualizedContainerService.HintSize="400,186.4" />
       <sap2010:ViewStateData Id="LogMessage_4" sap:VirtualizedContainerService.HintSize="400,175.2" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="471.2,1828">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="470,1821">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="500,1964.8">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="498,1957">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence7_1" sap:VirtualizedContainerService.HintSize="540,2044.8" />
+      <sap2010:ViewStateData Id="Sequence7_1" sap:VirtualizedContainerService.HintSize="538,2037" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
